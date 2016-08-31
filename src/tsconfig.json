@@ -1,9 +1,26 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "target": "es5",
-        "noImplicitAny": true,
-        "sourceMap": true
-    }
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "outDir": "../built",
+    "types": [
+      "core-js",
+      "jquery",
+      "node",
+      "reflect-metadata"
+    ]
+  },
+  "files": [
+    "main.ts"
+  ],
+  "filesGlob": [
+    "./*.ts",
+    "./**/*.ts"
+  ]
 }
