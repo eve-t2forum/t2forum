@@ -2,7 +2,7 @@ import { compose } from '@ngrx/core/compose';
 import '@ngrx/core/add/operator/select';
 import { Observable } from 'rxjs/Observable';
 
-import { getHideLockedState } from '../app.selectors';
+import { composeHideLockedState } from '../app.selectors';
 import { HideLockedState } from './hide-locked.store';
 
 export function getHideLocked() {
@@ -12,6 +12,6 @@ export function getHideLocked() {
 export function composeHideLocked() {
   return compose(
     getHideLocked(),
-    getHideLockedState()
+    composeHideLockedState()
   );
 }
