@@ -22,7 +22,7 @@ module.exports = {
     ],
     loaders: [
       { test: /\.tsx?$/, loader: 'ts-loader?tsconfig=src/tsconfig.json' },
-      { test: /\.scss$/, loader: 'style!css!sass' },
+      { test: /\.s?css$/, loader: 'raw!sass' },
       { test: /\.(ttf|eot|woff2?|png|jpe?g|svg)$/, loader: "url-loader" },
       { test: /\.html$/, loader: 'html'}
     ]
@@ -30,6 +30,5 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
   ]
 };

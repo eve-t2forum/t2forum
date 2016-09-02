@@ -1,10 +1,10 @@
+/// <reference types="node" />
+/// <reference types="jquery" />
+
 import 'reflect-metadata';
 import 'core-js';
-import './unsafeWindow-shim';
 import 'zone.js';
 import 'rxjs';
-
-import * as $ from 'jquery';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

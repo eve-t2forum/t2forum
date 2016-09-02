@@ -9,9 +9,6 @@ import { ROOT_REDUCERS } from './app.store';
 import { HideLockedComponent, HideLockedService } from './hide-locked';
 import { LocalStorageEffects } from './local-storage';
 
-import * as jQuery from 'jquery';
-jQuery.noConflict();
-
 @NgModule({
     imports: [
       BrowserModule,

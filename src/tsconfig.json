@@ -8,14 +8,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "outDir": "../built",
-    "types": [
-      "core-js",
-      "immutable",
-      "jquery",
-      "node",
-      "reflect-metadata"
-    ]
+    "outDir": "../built"
   },
   "files": [
     "main.ts"
