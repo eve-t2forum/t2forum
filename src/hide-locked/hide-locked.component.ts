@@ -26,7 +26,7 @@ export class HideLockedComponent implements OnInit {
 
   ngOnInit() {
     this.$(this.myElement.nativeElement).detach().prependTo(
-      $('#yafheader td').first()
+      $('div.yafnet table.command td[align=right]').first()
     );
 
     this.hide$ = this.hideLockedService.getHideLocked();
