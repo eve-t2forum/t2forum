@@ -11,7 +11,7 @@ function init() {
     console.log('Loaded beta T2 Forums from S3');
 }
 
-var BUNDLE_URL = 'https://s3.amazonaws.com/t2-forum/t2forum-beta.bundle.js';
+var BUNDLE_URL = 'https://s3.amazonaws.com/t2forum/t2forum-beta.bundle.js';
 
 var remoteScript = document.createElement('script');
 remoteScript.src = BUNDLE_URL;
