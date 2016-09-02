@@ -17,7 +17,6 @@ export class HideLockedState extends Record({
 }
 
 export const hideLockedReducer: ActionReducer<HideLockedState> = (state=new HideLockedState(), action) => {
-  console.log('reduce', state, action);
   switch(action.type) {
     case ToggleHideLockedAction.type:
     let hide = (<ToggleHideLockedAction>action).payload.hide;
@@ -25,10 +24,14 @@ export const hideLockedReducer: ActionReducer<HideLockedState> = (state=new Hide
     break;
 
     case LoadStateAction.type:
-    let myStateData = (<LoadStateAction>action).payload.stateData.hideLocked;
+    let myStateData: HideLockedStateData = undefined
+    try {
+      let myStateData = (<LoadStateAction>action).payload.stateData.hideLocked;
+    } catch(e) {
+      console.warn('Failed to load appState.hideLocked; resetting to default');
+    }
     state = new HideLockedState(myStateData);
     break;
   }
-  console.log('result', state);
   return state;
 }
