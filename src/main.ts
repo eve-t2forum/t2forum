@@ -1,7 +1,7 @@
 /// <reference types="node" />
 /// <reference types="jquery" />
 /// <reference types="jqueryui" />
-
+/// <reference types="node-uuid" />
 
 import 'reflect-metadata';
 import 'core-js';
