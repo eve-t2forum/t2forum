@@ -1,5 +1,7 @@
 /// <reference types="node" />
 /// <reference types="jquery" />
+/// <reference types="jqueryui" />
+
 
 import 'reflect-metadata';
 import 'core-js';
