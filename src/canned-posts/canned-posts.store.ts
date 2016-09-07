@@ -1,4 +1,4 @@
-import { Map, Record } from 'immutable';
+import { Map, Record, fromJS } from 'immutable';
 import { ActionReducer, Store } from '@ngrx/store';
 import * as UUID from 'node-uuid';
 
@@ -24,10 +24,12 @@ export class CannedPostsState extends Record({
       title: 'Untitled canned post',
       text: '',
     });
-    return <this>this.withMutations((self: CannedPostsState) => {
-      self.update('posts', (posts: Map<string, Canned>) => posts.set(newPost.id, newPost));
-      self.set('selectedPost', newPost.id);
-    })
+    let newState = <this>this.update('posts', (posts: Map<string, Canned>) => posts.set(newPost.id, newPost))
+    return newState.selectPost(newPost.id);
+  }
+
+  selectPost(id: string) {
+    return <this>this.set('selectedPost', id);
   }
 
   deletePost(id: string) {
@@ -44,6 +46,15 @@ export class CannedPostsState extends Record({
     return <this>this.updateIn(['posts', id], (c: Canned) =>
       c.set('text', text)
     );
+  }
+
+  importPostsFromJS(js: {[id:string]: CannedData}) {
+    return <this>this.update('posts', (posts: Map<string, Canned>) => {
+      for (let id in js) {
+        posts = posts.set(id, new Canned(js[id]));
+      }
+      return posts;
+    })
   }
 }
 
@@ -68,18 +79,21 @@ export const cannedPostsReducer: ActionReducer<CannedPostsState> = (state=new Ca
     state = state.updatePostText(setTextPayload.cannedPostId, setTextPayload.text);
     break;
 
+    case actions.SelectCannedPostAction.type:
+    let selectPostId = (<actions.SelectCannedPostAction>action).payload.cannedPostId;
+    state = state.selectPost(selectPostId);
+    break;
+
     case LoadStateAction.type:
-    let myStateData: CannedPostsStateData = undefined
+    state = new CannedPostsState();
     try {
-      myStateData = (<LoadStateAction>action).payload.stateData.cannedPosts;
-      myStateData.posts = myStateData.posts.withMutations(posts => {
-        posts.forEach((value, key) => posts.set(key, new Canned(value)));
-        return posts;
-      });
+      let savedStateData = (<LoadStateAction>action).payload.stateData.cannedPosts;
+      state = state.importPostsFromJS(savedStateData.posts);
+      state = state.selectPost(savedStateData.selectedPost);
     } catch(e) {
-      console.warn('Failed to load appState.cannedPosts; resetting to default');
+      console.warn('Failed to load appState.cannedPosts; resetting to default', e);
+      state = new CannedPostsState();
     }
-    state = new CannedPostsState(myStateData);
     break;
   }
   return state;

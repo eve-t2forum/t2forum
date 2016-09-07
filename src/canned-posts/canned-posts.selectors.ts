@@ -1,7 +1,8 @@
 import { compose } from '@ngrx/core/compose';
 import { Observable } from 'rxjs/Observable';
+import { Map } from 'immutable';
 
-import { composeCannedPostsState, getItemsFromMapById } from '../app.selectors';
+import { composeCannedPostsState, getItemFromMapById } from '../app.selectors';
 import { CannedPostsState } from './canned-posts.store';
 import { Canned } from './canned-posts.model';
 
@@ -13,9 +14,23 @@ export function getCannedPostsMap() {
   return (state: Observable<CannedPostsState>) => state.select(s => s.posts)
 }
 
-export function composeCannedPostsById(ids: string[]) {
+export function composeCannedPostsMap() {
   return compose(
-    getItemsFromMapById<Canned>(ids),
+    getCannedPostsMap(),
+    composeCannedPostsState(),
+  )
+}
+
+export function composeSelectedCannedPostId() {
+  return compose(
+    getSelectedCannedPostId(),
+    composeCannedPostsState()
+  )
+}
+
+export function composeCannedPostById(id: string) {
+  return compose(
+    getItemFromMapById<Canned>(id),
     getCannedPostsMap(),
     composeCannedPostsState(),
   )

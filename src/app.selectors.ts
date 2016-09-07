@@ -5,10 +5,8 @@ import { Map } from 'immutable';
 
 import { PersistentAppState, StoreRoot } from './app.store';
 
-export function getItemsFromMapById<T>(ids: string[]) {
-  return (state: Observable<Map<string,T>>) => state.select(s => ids.map(
-    id => s.get(id)
-  ));
+export function getItemFromMapById<T>(id: string) {
+  return (state: Observable<Map<string,T>>) => state.select(s => s.get(id));
 }
 
 export function getHideLockedState() {

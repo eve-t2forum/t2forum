@@ -1,0 +1,19 @@
+<div *ngIf="!!post" class="post-details">
+  <div class="post-details-title">
+    <strong>Title:</strong>
+    <input #title type="text" [value]="post.title" (keyup)="titleChanges$.next(title.value)" />
+  </div>
+  <textarea #text
+    class="post-details-text"
+    [value]="post.text"
+    (keyup)="textChanges$.next(text.value)"></textarea>
+  <div class="post-details-actions">
+    <a class="btn gray" (click)="confirmDelete()">
+      <span> Delete Post </span>
+    </a>
+    <a class="btn orange" (click)="copyToClipboard()">
+      <span *ngIf="!showCopySuccess"> Copy All to Clipboard </span>
+      <span *ngIf="showCopySuccess"> Copied! </span>
+    </a>
+  </div>
+</div>

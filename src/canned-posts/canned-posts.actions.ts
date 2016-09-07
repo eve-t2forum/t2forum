@@ -22,3 +22,9 @@ export class SetCannedPostTextAction implements Action {
   type = SetCannedPostTextAction.type;
   constructor(public payload: {cannedPostId: string, text: string}) {}
 }
+
+export class SelectCannedPostAction implements Action {
+  static type = 't2forum.canned-posts.selectPost';
+  type = SelectCannedPostAction.type;
+  constructor(public payload: {cannedPostId: string}) {}
+}

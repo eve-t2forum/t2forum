@@ -52,6 +52,7 @@
     "@types/node": "6.0.38",
     "@types/node-uuid": "0.0.27",
     "@types/zone.js": "0.0.26",
+    "clipboard-js": "0.2.0",
     "core-js": "2.4.1",
     "immutable": "3.8.1",
     "jquery": "^3.1.0",

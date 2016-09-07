@@ -1,0 +1,30 @@
+@import "../../common/styles.scss";
+
+ul.canned-list {
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: flex-start;
+  margin-bottom: 0.5em;
+
+  list-style: none;
+  li {
+    background: $gray1-background;
+    color: $muted_color;
+    padding: 0.5em;
+    cursor: pointer;
+    border-bottom: thin solid $gray2-background;
+  }
+
+  li:hover {
+    background: $gray2-background;
+  }
+
+  li.selected {
+    background: $gray2-background;
+    color: $plaintext_color;
+  }
+}
+
+a.btn {
+  float: none;
+}

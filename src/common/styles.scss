@@ -5,3 +5,13 @@ $muted_color: #afafaf;
 $gray1-background: #161616;
 $gray2-background: #1f1f1f;
 $gray3-background: #323233;
+
+a {
+  cursor: pointer;
+}
+a.btn {
+  display: inline-block;
+  span {
+    display: inline-block;
+  }
+}

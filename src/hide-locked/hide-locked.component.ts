@@ -31,7 +31,6 @@ export class HideLockedComponent implements OnInit {
 
     this.hide$ = this.hideLockedService.getHideLocked();
     this.hide$.subscribe(hide => {
-      console.log('hide updated', hide);
       let lockedRows = this.$('table.content.topics a.locked, table.content.topics a.topic_new_locked').parents('tr');
       if (hide) {
         lockedRows.hide();

@@ -22,7 +22,6 @@ export class PersistentAppState extends Record({
 export const persistentAppStateReducer: ActionReducer<PersistentAppState> = (state=new PersistentAppState(), action) => {
   if (action.type == LoadStateAction.type) {
     let stateData = (<LoadStateAction>action).payload.stateData;
-    console.log('loading state', stateData);
     state = new PersistentAppState(stateData);
   }
 

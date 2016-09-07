@@ -3,6 +3,8 @@
 /// <reference types="jqueryui" />
 /// <reference types="node-uuid" />
 
+/// <reference path="./custom-types/index" />
+
 import 'reflect-metadata';
 import 'core-js';
 import 'zone.js';

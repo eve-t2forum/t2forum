@@ -33,7 +33,6 @@ export class LocalStorageEffects {
     let stateData: PersistentAppStateData = state.toJS();
     let serialized = JSON.stringify(stateData);
     localStorage.setItem(this.stateStorageKey, serialized);
-    console.log('localStorage set', this.stateStorageKey, serialized);
     return Observable.of<Action>();
   });
 

@@ -6,9 +6,23 @@
 
 <div class="canned-posts-container">
   <div class="post-listing">
-    <post-listing [posts]="[]"></post-listing>
+    <canned-post-listing
+      (postCreated)="cannedPostsService.createCannedPost()"
+      (postSelected)="cannedPostsService.selectCannedPost($event)"
+      [posts]="posts$ | async"
+      [selectedPostId]="selectedPostId$ | async">
+    </canned-post-listing>
   </div>
   <div class="post-details">
-    blah blah
+    <div *ngIf="!(selectedPost$ | async)">
+      No canned text selected.
+    </div>
+    <canned-post-details
+      [postAsync]="selectedPost$"
+      (titleChanged)="cannedPostsService.setPostTitle(selectedPostId, $event)"
+      (textChanged)="cannedPostsService.setPostText(selectedPostId, $event)"
+      (postDeleted)="cannedPostsService.deletePost(selectedPostId)"
+      >
+    </canned-post-details>
   </div>
 </div>
