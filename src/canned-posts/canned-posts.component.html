@@ -1,0 +1,14 @@
+<li id="canned-posts" (click)="openCannedModal()"
+  (mouseenter)="hovering=true" (mouseleave)="hovering=false">
+  <img id="canned-save-button" src="./save-button.png" *ngIf="!hovering"/>
+  <img id="canned-save-button" src="./save-button-hover.png" *ngIf="hovering"/>
+</li>
+
+<div class="canned-posts-container">
+  <div class="post-listing">
+    <post-listing [posts]="[]"></post-listing>
+  </div>
+  <div class="post-details">
+    blah blah
+  </div>
+</div>

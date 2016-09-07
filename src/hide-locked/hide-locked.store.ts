@@ -26,11 +26,13 @@ export const hideLockedReducer: ActionReducer<HideLockedState> = (state=new Hide
     case LoadStateAction.type:
     let myStateData: HideLockedStateData = undefined
     try {
-      let myStateData = (<LoadStateAction>action).payload.stateData.hideLocked;
+      myStateData = (<LoadStateAction>action).payload.stateData.hideLocked;
     } catch(e) {
       console.warn('Failed to load appState.hideLocked; resetting to default');
     }
+    console.log('load state action', action, 'compiled into', myStateData);
     state = new HideLockedState(myStateData);
+    console.log('outcome state', state.toJS());
     break;
   }
   return state;
