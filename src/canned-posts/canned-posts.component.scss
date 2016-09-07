@@ -1,0 +1,14 @@
+div.canned-posts-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+
+  .post-listing {
+    flex-basis: 20%;
+  };
+
+  .post-details {
+    flex-grow: 1;
+  };
+}

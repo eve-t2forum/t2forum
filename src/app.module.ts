@@ -9,7 +9,7 @@ import { ROOT_REDUCERS } from './app.store';
 import { DialogService } from './dialog/dialog.service';
 
 import { HideLockedComponent, HideLockedService } from './hide-locked';
-import { CannedPostsComponent } from './canned-posts';
+import { DECLARATIONS as CANNED_DECLARATIONS } from './canned-posts';
 import { LocalStorageEffects } from './local-storage';
 
 @NgModule({
@@ -20,8 +20,9 @@ import { LocalStorageEffects } from './local-storage';
     ],
     declarations: [
       AppComponent,
-      CannedPostsComponent,
-      HideLockedComponent],
+      HideLockedComponent,
+      ...CANNED_DECLARATIONS,
+    ],
     providers: [
       {provide: 'jquery', useValue: jQuery},
       HideLockedService,

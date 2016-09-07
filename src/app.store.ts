@@ -3,17 +3,20 @@ import { Store, ActionReducer } from '@ngrx/store';
 import { Record } from 'immutable';
 
 import { hideLockedReducer, HideLockedState, HideLockedStateData } from './hide-locked/hide-locked.store';
+import { cannedPostsReducer, CannedPostsState, CannedPostsStateData } from './canned-posts';
 import { LoadStateAction } from './local-storage/local-storage.actions';
 
 
 export interface PersistentAppStateData {
   hideLocked: HideLockedStateData;
+  cannedPosts: CannedPostsStateData;
 }
 export interface PersistentAppState extends PersistentAppStateData {}
 export class PersistentAppState extends Record({
-  hideLocked: undefined,
+  hideLocked: undefined, cannedPosts: undefined,
 }) {
   hideLocked: HideLockedState;
+  cannedPosts: CannedPostsState;
 }
 
 export const persistentAppStateReducer: ActionReducer<PersistentAppState> = (state=new PersistentAppState(), action) => {
@@ -25,6 +28,7 @@ export const persistentAppStateReducer: ActionReducer<PersistentAppState> = (sta
 
   state = <PersistentAppState>state.merge({
     hideLocked: hideLockedReducer(state.hideLocked, action),
+    cannedPosts: cannedPostsReducer(state.cannedPosts, action),
   });
 
   return state;

@@ -6,7 +6,6 @@ export interface CannedData {
   text: string;
 }
 
-
 export interface Canned extends CannedData {}
 export class Canned extends Record({
   id: undefined, title: undefined, text: undefined,
