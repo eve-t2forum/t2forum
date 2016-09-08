@@ -4,7 +4,7 @@
   <img id="canned-save-button" src="./save-button-hover.png" *ngIf="hovering"/>
 </li>
 
-<div class="canned-posts-container">
+<div *ngIf="render$ | async" class="canned-posts-container">
   <div class="post-listing">
     <canned-post-listing
       (postCreated)="cannedPostsService.createCannedPost()"

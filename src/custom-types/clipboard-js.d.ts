@@ -1,5 +1,3 @@
-
-
 declare module 'clipboard-js' {
   export function copy(plainText: string): Promise<any>;
   export function copy(richData: {'text/html': string, 'text/plain': string}): Promise<any>;

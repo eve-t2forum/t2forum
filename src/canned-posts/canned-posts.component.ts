@@ -1,10 +1,12 @@
 import { Component, ElementRef, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Map } from 'immutable';
 
 import { Canned } from './canned-posts.model';
 import { CannedPostsService } from './canned-posts.service';
 import { DialogService } from '../dialog/dialog.service';
+import { getCurrentPageType, PageType } from '../common/forum-utils';
 
 @Component({
   selector: 'canned-posts',
@@ -13,6 +15,7 @@ import { DialogService } from '../dialog/dialog.service';
 })
 export class CannedPostsComponent implements OnInit {
   hovering: boolean = false;
+  render$: Observable<boolean>;
 
   posts$: Observable<Canned[]>;
   selectedPostId$: Observable<string>;
@@ -24,12 +27,18 @@ export class CannedPostsComponent implements OnInit {
     private myElement: ElementRef,
     @Inject('jquery') private $: JQueryStatic,
     private dialogService: DialogService,
-    private cannedPostsService: CannedPostsService
+    private cannedPostsService: CannedPostsService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.$(this.myElement.nativeElement).find('li#canned-posts').detach().appendTo(
       $('div#bbcodeFeatures ul').first()
+    );
+
+    this.render$ = getCurrentPageType(this.router.routerState)
+    .map(pageType =>
+      [PageType.ThreadReplyView, PageType.NewThreadView].indexOf(pageType) > -1
     );
 
     this.posts$ = this.cannedPostsService.getCannedPostsMap().map(map => map.toArray());

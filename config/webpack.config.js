@@ -13,7 +13,9 @@ module.exports = {
 
   resolve: {
     root: path.resolve('./src'),
-    extensions: ['', '.ts', '.js', '.scss', '.css', '.html', '.json']
+    extensions: [
+      '', '.ts', '.js', '.scss', '.css', '.html', '.json', '.yaml',
+    ],
   },
 
   module: {
@@ -22,10 +24,12 @@ module.exports = {
     ],
     loaders: [
       { test: /\.tsx?$/, loader: 'ts-loader?tsconfig=src/tsconfig.json' },
-      { test: /\.s?css$/, loader: 'raw!sass' },
-      { test: /\.(ttf|eot|woff2?|png|jpe?g|svg)$/, loader: "url-loader" },
+      { test: /\.scss$/, loader: 'css-to-string!css!sass' },
+      { test: /\.css$/, loader: 'css-to-string!css' },
+      { test: /\.(ttf|eot|woff2?|png|jpe?g|svg)$/, loader: "url" },
       { test: /\.html$/, loader: 'html'},
       { test: /\.json$/, loader: 'json'},
+      { test: /\.ya?ml$/, loader: 'json!yaml'},
     ]
   },
 
