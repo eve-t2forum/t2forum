@@ -1,0 +1,8 @@
+.search-box {
+  display: flex;
+  flex-flow: row nowrap;
+
+  > div {
+    flex-basis: 50%;
+  }
+}

@@ -1,0 +1,19 @@
+<div class='search-box'>
+  <div>
+    <h4> Filter by: </h4>
+    <input type="text" placeholder="Type search here..."
+      [(ngModel)]="searchQuery" (ngModelChange)="searchQueryUpdated($event)" />
+  </div>
+
+  <div>
+    <h4> In category: </h4>
+    <select (change)="searchCategoryUpdated($event.target.value)">
+      <option value="all" [selected]="isSelected('all')">
+        All Categories
+      </option>
+      <option *ngFor="let cat of ruleCategories" [value]="cat.id" [selected]="isSelected(cat.id)">
+        {{cat.title}}
+      </option>
+    </select>
+  </div>
+</div>

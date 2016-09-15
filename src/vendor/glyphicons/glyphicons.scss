@@ -38,6 +38,11 @@
 	}
 }
 
+.glyph-text-sized {
+	width: 1em !important;
+	height: 1em !important;
+}
+
 .glyph-small {
 	width: 14px !important;
 	height: 14px !important;
@@ -48,6 +53,35 @@
 	height: 32px !important;
 }
 
+
+.glyph-menu-hamburger {
+	background-image: url("./png/glyphicons-517-menu-hamburger.png");
+}
+
+.glyph-quote {
+	background-image: url("./png/glyphicons-547-quote.png");
+}
+
+.glyph-unshare {
+	background-image: url("./png/glyphicons-222-unshare.png");
+}
+
+.glyph-share {
+	background-image: url("./png/glyphicons-223-share.png");
+}
+
+.glyph-remove {
+	background-image: url("./png/glyphicons-208-remove.png");
+}
+
+.glyph-copy {
+	background-image: url("./png/glyphicons-512-copy.png");
+}
+
+// Rest are commented out so they are not included by Webpack
+
+
+/*
 .glyph-glass {
 	background-image: url("./png/glyphicons-1-glass.png");
 }
@@ -411,9 +445,7 @@
 .glyph-ok {
 	background-image: url("./png/glyphicons-207-ok.png");
 }
-.glyph-remove {
-	background-image: url("./png/glyphicons-208-remove.png");
-}
+
 .glyph-cart-in {
 	background-image: url("./png/glyphicons-209-cart-in.png");
 }
@@ -459,12 +491,7 @@
 .glyph-play-button {
 	background-image: url("./png/glyphicons-221-play-button.png");
 }
-.glyph-unshare {
-	background-image: url("./png/glyphicons-222-unshare.png");
-}
-.glyph-share {
-	background-image: url("./png/glyphicons-223-share.png");
-}
+
 .glyph-chevron-right {
 	background-image: url("./png/glyphicons-224-chevron-right.png");
 }
@@ -1425,9 +1452,7 @@
 .glyph-duplicate {
 	background-image: url("./png/glyphicons-511-duplicate.png");
 }
-.glyph-copy {
-	background-image: url("./png/glyphicons-512-copy.png");
-}
+
 .glyph-paste {
 	background-image: url("./png/glyphicons-513-paste.png");
 }
@@ -1439,9 +1464,6 @@
 }
 .glyph-shower {
 	background-image: url("./png/glyphicons-516-shower.png");
-}
-.glyph-menu-hamburger {
-	background-image: url("./png/glyphicons-517-menu-hamburger.png");
 }
 .glyph-option-vertical {
 	background-image: url("./png/glyphicons-518-option-vertical.png");
@@ -1538,9 +1560,6 @@
 }
 .glyph-eye-minus {
 	background-image: url("./png/glyphicons-546-eye-minus.png");
-}
-.glyph-quote {
-	background-image: url("./png/glyphicons-547-quote.png");
 }
 .glyph-bitcoin {
 	background-image: url("./png/glyphicons-548-bitcoin.png");
@@ -2448,3 +2467,4 @@
 .glyph-vector-path-curve {
 	background-image: url("./png/glyphicons-99-vector-path-curve.png");
 }
+*/

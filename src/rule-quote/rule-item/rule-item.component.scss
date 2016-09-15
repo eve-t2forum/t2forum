@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .headline {
+    font-weight: bold;
+    flex-grow: 1;
+  }
+  .select-button {
+    font-size: 0.8em;
+  }
+}
+
+.details {
+  
+}

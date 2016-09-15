@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+
 
 import { AppComponent, DummyComponent } from './app.component';
 import { ROOT_REDUCERS } from './app.store';
@@ -27,6 +29,7 @@ import { LocalStorageEffects } from './local-storage';
 @NgModule({
     imports: [
       BrowserModule,
+      FormsModule,
       RouterModule.forRoot([{path: '**', component: DummyComponent}]),
       StoreModule.provideStore(ROOT_REDUCERS),
       EffectsModule.run(LocalStorageEffects),

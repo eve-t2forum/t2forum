@@ -1,0 +1,47 @@
+@import "../common/styles.scss";
+
+div.rule-quote {
+  display: flex;
+  flex-flow: column nowrap;
+
+  .header {
+    display: flex;
+    flex-flow: row nowrap;
+    rule-search {
+      flex: 1;
+      display: flex;
+      flex-flow: row nowrap;
+    }
+    .paste-submit {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-end;
+    }
+  }
+
+  .rule-lists {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 1em;
+
+    rule-list {
+      margin-top: 1em;
+      overflow: auto;
+    }
+    .left-list, .right-list {
+      flex-basis: 95 / 2 * 100%;
+    }
+    .divider {
+      flex-basis: 0px;
+      border: thin solid $gray1-background;
+      background: $gray1-background;
+    }
+  }
+
+  .instructions {
+    padding: 1em;
+    font-size: 1.5em;
+    font-style: italic;
+    color: $muted_color;
+  }
+}

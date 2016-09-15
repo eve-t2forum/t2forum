@@ -20,7 +20,8 @@ interface PageInfo {
 }
 
 export function getCurrentPageType(route: RouterState): Observable<PageType> {
-  return Observable.combineLatest(route.queryParams, route.fragment)
+  console.log(route);
+  return Observable.combineLatest(route.root.queryParams, route.root.fragment)
   .map(([params, fragment]) => ({
     g: params['g'],
     f: params['f'],

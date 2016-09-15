@@ -1,3 +1,46 @@
 <a id="rule-quote-trigger" title="Quote rules" (click)="openRuleQuoteModal()">
   <span class="glyph-quote inverted glyph-small"></span>
 </a>
+
+<div class="rule-quote" *ngIf="!hidden">
+
+  <div class="header">
+    <rule-search (rulesFound)="searchReturnedResults($event)"> </rule-search>
+    <div class="paste-submit">
+      <a class="btn orange" (click)="formatToClipboard()">
+        <span>
+          <div class="glyph-copy glyph-text-sized inverted"></div>
+          Format and copy
+        </span>
+      </a>
+      <span *ngIf="success"> Copied to clipboard! </span>
+    </div>
+  </div>
+
+  <div class="rule-lists">
+    <rule-list class="left-list"
+      *ngIf="(searchResults$ | async)"
+      [ruleFiles]="rulesService.getRules()"
+      [showOnlyLocators]="filteredSearchResults$ | async"
+      [isUserSelected]="true"
+      (ruleSelected)="ruleSelected($event)">
+    </rule-list>
+    <div *ngIf="!(searchResults$ | async)" class="left-list instructions">
+      Use the inputs above to search for rules.
+    </div>
+
+    <div class="divider"> </div>
+
+    <rule-list class="right-list"
+      *ngIf="(sortedSelectedRules$ | async).length"
+      [ruleFiles]="rulesService.getRules()"
+      [showOnlyLocators]="sortedSelectedRules$ | async"
+      [isUserSelected]="false"
+      (ruleDeselected)="ruleDeselected($event)">
+    </rule-list>
+    <div *ngIf="!(sortedSelectedRules$ | async).length" class="right-list instructions">
+      Select rules from the left panel to stage them for pasting.
+    </div>
+  </div>
+
+</div>

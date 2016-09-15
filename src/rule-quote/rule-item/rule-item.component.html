@@ -1,0 +1,17 @@
+<div class="header" [title]="file.title">
+  <p class="headline">{{locator.ruleId}}. {{rule.headline}}</p>
+  <div class="select-button">
+    <a class="btn gray" *ngIf="isUserSelected" (click)="ruleSelected.emit(locator)">
+      <span thanksCCP="true">
+        <div class="glyph-share glyph-text-sized inverted"></div>
+      </span>
+    </a>
+    <a class="btn gray" *ngIf="!isUserSelected" (click)="ruleDeselected.emit(locator)">
+      <span thanksCCP="true">
+        <div class="glyph-remove glyph-text-sized inverted"></div>
+      </span>
+    </a>
+  </div>
+</div>
+
+<p *ngIf="rule.details" class="details">{{rule.details}}</p>

@@ -1,6 +1,7 @@
 /// <reference types="node" />
 /// <reference types="jquery" />
 /// <reference types="jqueryui" />
+/// <reference types="lodash" />
 /// <reference types="node-uuid" />
 
 /// <reference path="./custom-types/index" />

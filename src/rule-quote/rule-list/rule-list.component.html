@@ -1,0 +1,8 @@
+<rule-item
+  *ngFor="let locator of showOnlyLocators"
+  [rules]="ruleFiles"
+  [locator]="locator"
+  [isUserSelected]="isUserSelected"
+  (ruleSelected)="ruleSelected.emit($event)"
+  (ruleDeselected)="ruleDeselected.emit($event)">
+</rule-item>

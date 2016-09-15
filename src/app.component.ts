@@ -4,8 +4,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
     selector: 't2forum',
     template: `
     <router-outlet></router-outlet>
-    <canned-posts></canned-posts>
     <hide-locked></hide-locked>
+    <canned-posts></canned-posts>
     <rule-quote></rule-quote>
     `,
 })

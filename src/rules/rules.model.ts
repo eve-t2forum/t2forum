@@ -1,5 +1,5 @@
 export interface RuleFile {
-  rules: {[num:number]: Rule};
+  rules: {[id: string]: Rule};
   title: string;
   url: string;
 }
@@ -7,4 +7,9 @@ export interface RuleFile {
 export interface Rule {
   headline: string;
   details?: string;
+}
+
+export interface RuleLocator {
+  fileId: string;
+  ruleId: string
 }

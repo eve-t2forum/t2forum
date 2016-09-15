@@ -15,7 +15,8 @@ import { getCurrentPageType, PageType } from '../common/forum-utils';
 })
 export class CannedPostsComponent implements OnInit {
   hovering: boolean = false;
-  render$: Observable<boolean>;
+  relevant$: Observable<boolean>;
+  hidden = true;
 
   posts$: Observable<Canned[]>;
   selectedPostId$: Observable<string>;
@@ -36,7 +37,7 @@ export class CannedPostsComponent implements OnInit {
       $('div#bbcodeFeatures ul').first()
     );
 
-    this.render$ = getCurrentPageType(this.router.routerState)
+    this.relevant$ = getCurrentPageType(this.router.routerState)
     .map(pageType =>
       [PageType.ThreadReplyView, PageType.NewThreadView].indexOf(pageType) > -1
     );
@@ -50,7 +51,7 @@ export class CannedPostsComponent implements OnInit {
   openCannedModal() {
     this.dialogService.openDialog(this.myElement, 'Canned Text', {
       'Close': () => this.dialogService.destroyDialog(),
-    });
+    }).subscribe(closed => this.hidden=closed);
   }
 
 }
